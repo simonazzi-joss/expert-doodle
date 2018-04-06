@@ -1,0 +1,15 @@
+<p>{{::ctrl.data}}</p>					<!-- one way binding, it will not update -->
+<p>{{ctrl.data}}</p>					<!-- normal binding, it WILL update -->
+
+<form name="form" ng-submit="ctrl.submit(form)">
+    <input value="{{ctrl.data}}" />		<!-- entrambe settano il valore della input -->
+	<input ng-model="ctrl.data" />		<!-- ma solo l'ng-model cambia il valore nello $scope -->
+	<br />
+	<br />
+	<br />
+	<input name="nome" ng-model="ctrl.nome" required/>		<br />
+	<p ng-if="! form.nome.$valid">{{ctrl.nome}} is NOT a valid name</p>
+	<input name="cognome" ng-model="ctrl.cognome" required/>		<br />
+	<p ng-if="! form.cognome.$valid">{{ctrl.cognome}} is NOT a valid surname</p>
+	<input type="submit" />
+</form>
