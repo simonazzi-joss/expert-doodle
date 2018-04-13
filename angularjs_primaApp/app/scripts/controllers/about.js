@@ -28,16 +28,16 @@ angular.module('testsApp')
 			var nMines = 10;
 			var x;
 			var y;
-			for(var i=0; i<nMines; i++) {
-				x = parseInt(Math.random() * width);
-				y = parseInt(Math.random() * height);
-				
-				if(vm.gridMines[x][y] && !vm.gridMines[x][y].isMine) {
+				for(var i=0; i<nMines; i++) {
+					x = parseInt(Math.random() * width);
+					y = parseInt(Math.random() * height);
+					
+					if(vm.gridMines[x][y] && !vm.gridMines[x][y].isMine) {
 					vm.gridMines[x][y].setMine();
 
-					increaseNumberOfCell(x+1, y-1);
-					increaseNumberOfCell(x+1, y);
-					increaseNumberOfCell(x+1, y+1);
+					increaseNumberOfCell(x-1, y-1);
+					increaseNumberOfCell(x-1, y);
+					increaseNumberOfCell(x-1, y+1);
 
 					increaseNumberOfCell(x, y-1);
 				//	increaseNumberOfCell(x, y);
@@ -50,11 +50,14 @@ angular.module('testsApp')
 					i--;
 				}
 			}
-
 		};
 
-		vm.clickCell = function(cell) {
-			console.log(cell);
+		vm.clickCell = function(cell, btn) {
+			if(cell.isMine) {
+				console.log('You hit a mine');
+			} else {
+				btn.innerText = cell.nearbyMines;
+			}
 		};
 
 		function increaseNumberOfCell(x, y) {

@@ -10,24 +10,17 @@ function Cell(x, y) {       //jshint ignore: line
 
     _this.setMine = function() {
         _this.isMine = true;
+
+        _this.nearbyMines = -1;
     };
     _this.increaseNeabyMines = function() {
+        if(_this.isMine) {
+            return;
+        }
         _this.nearbyMines = (_this.nearbyMines + 1);
     };
     _this.reset = function() {
         _this.isMine = false;
         _this.nearbyMines = 0;
     };
-/*
-    Cell.prototype.setMine = function() {
-        _this.isMine = true;
-    };
-    Cell.prototype.increaseNeabyMines = function() {
-        _this.nearbyMines = (_this.nearbyMines + 1);
-    };
-    Cell.prototype.reset = function() {
-        _this.isMine = false;
-        _this.nearbyMines = 0;
-    };
-*/
 }

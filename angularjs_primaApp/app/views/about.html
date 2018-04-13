@@ -1,9 +1,11 @@
-<div>
-    <button ng-click="about.start()">Start!</button>
+<div class="menu">
+    <a class="btn" ng-click="about.start()">Start!</a>
+</div>
 
-    <div>
+<div class="game-container">
+    <div class="game">
         <div class="row" ng-repeat="row in about.gridMines">
-            <button class="cell" ng-repeat="cell in row" ng-click="about.clickCell(cell)">{{cell.nearbyMines}}</button>
+            <button class="cell" ng-repeat="cell in row" ng-click="about.clickCell(cell, $event.target)"></button>
         </div>
     </div>
 </div>
