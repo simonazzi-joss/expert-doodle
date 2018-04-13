@@ -1,10 +1,9 @@
 <div>
     <button ng-click="about.start()">Start!</button>
 
-    <div ng-model="about.gridMines">
+    <div>
         <div class="row" ng-repeat="row in about.gridMines">
             <button class="cell" ng-repeat="cell in row" ng-click="about.clickCell(cell)">{{cell.nearbyMines}}</button>
         </div>
     </div>
-    {{about.gridMines}}
 </div>

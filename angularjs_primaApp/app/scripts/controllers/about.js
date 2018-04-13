@@ -46,8 +46,6 @@ angular.module('testsApp')
 					increaseNumberOfCell(x+1, y-1);
 					increaseNumberOfCell(x+1, y);
 					increaseNumberOfCell(x+1, y+1);
-
-					console.log(x, y, vm.gridMines[x][y]);
 				} else {
 					i--;
 				}
@@ -60,9 +58,8 @@ angular.module('testsApp')
 		};
 
 		function increaseNumberOfCell(x, y) {
-			console.log(x, y);
-			if( vm.gridMines && vm.gridMines[x] && vm.gridMines[x][y] ) {
-				vm.gridMines[x-1][y-1].increaseNeabyMines();
+			if( vm.gridMines && vm.gridMines[x] && vm.gridMines[x][y] && vm.gridMines[x][y].increaseNeabyMines) {
+				vm.gridMines[x][y].increaseNeabyMines();
 			}
 		}
 	}]);
