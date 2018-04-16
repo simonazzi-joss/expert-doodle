@@ -1,0 +1,28 @@
+<html>
+    <body>
+        <script>
+            var arr = [],
+                MAX=1000000,
+                nTest=50,
+                tot=0,
+                start,
+                end;
+            
+            for(var ind = 0; ind<nTest; ind++) {
+                for(i=0; i<MAX; i++) {
+                    arr.push(''+i);
+                }
+
+                start = +new Date();
+                for(var i of arr) {
+                    delete arr[i];
+                    //arr.slice(i, 1);
+                }
+                end = +new Date();
+                console.log(end - start);
+                tot += end-start;
+            }
+            console.log('Media: ' + tot/nTest);
+        </script>
+    </body>
+</html>
