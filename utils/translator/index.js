@@ -1,4 +1,7 @@
-$(function() {
+(function() {
+    /*******************************************
+     *    SEARCHING FOR FIELDS TO TRANSLATE    *
+     *******************************************/ 
     var fieldsToTranslate = getAllFieldsToTranslate();
     var request = {};
     
@@ -6,18 +9,32 @@ $(function() {
         request[ fieldsToTranslate[i].getAttribute('data-translation') ] = '';
     }
 
+    /*******************************************
+     *      SENDING REQUEST TO THE SERVER      *
+     *******************************************/ 
     var objResponse = getResponse();
 
+
+    /*******************************************
+     *          APPLING TRANSLATIONS           *
+     *******************************************/ 
     for(var idTrans in objResponse) {
         translateFields(idTrans, createString(objResponse[idTrans]));
     }
 
+
+    /*******************************************
+     *            SYSTEM FUNCTIONS             *
+     *******************************************/ 
     function getAllFieldsToTranslate() {
-        return $('[data-translation]');        // se si riuscisse a fare senza jquery, sarebbe perfetto
+        return document.querySelector('[data-translation]');        // se si riuscisse a fare senza jquery, sarebbe perfetto
     }
 
     function translateFields(idTrans, translation) {
-        $('[data-translation="' + idTrans + '"]').text(translation);
+        var res = document.querySelectorAll('[data-translation="' + idTrans + '"]');
+        for(var i = 0; i < res.length; i++) {
+            res[i].innerText = translation;
+        }
     }
 
     function createString(obj) {
@@ -52,4 +69,4 @@ $(function() {
             }
         };
     }
-});
+}) ();
